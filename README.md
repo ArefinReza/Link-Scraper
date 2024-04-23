@@ -5,7 +5,7 @@ pip install django
 pip install requests
 pip install beautifulsoup4
 
-After running this project, create super user:
+After running this project, create a super user:
 python manage.py createsuperuser
 
 Then run this project:
