@@ -69,8 +69,17 @@ plt.title('log img')
 plt.axis('off')
 
 6. Sigmoid
+
+sigmoid_img = exposure.adjust_sigmoid(cv2.cvtColor(img,rgb),cutoff=0.2, gain=10, inv=False)
+plt.figure(figsize=(8,6))
+plt.subplot(2,2,1)
+plt.title("Sigmoid")
+plt.imshow(sigmoid_img)
+plt.axis('off')
+
 7. Cumulative 
 8. Equalize Adapthist 
+
 9. Add, sub, multiplication
 
 import matplotlib.pyplot as plt
