@@ -1,0 +1,121 @@
+1. Grayscal image
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy
+img = cv2.imread(r'C:\Users\arefi\Downloads\shoes.jpg')
+rgb = cv2.COLOR_BGR2RGB
+plt.figure(figsize=(8,6))
+plt.subplot(1,2,1)
+plt.imshow(img)
+plt.title('gray')
+plt.axis('off')
+
+plt.subplot(1,2,2)
+plt.imshow(cv2.cvtColor(img,rgb))
+plt.title('colorful')
+plt.axis('off')
+
+2. Brightness 
+import cv2
+import matplotlib.pyplot as plt
+import numpy
+img = cv2.imread(r'C:\Users\arefi\Downloads\shoes.jpg')
+rgb = cv2.COLOR_BGR2RGB
+b_img = cv2.convertScaleAbs(img,alpha =1.2, beta =0)
+plt.figure(figsize=(8,6))
+plt.subplot(1,2,1)
+plt.imshow(cv2.cvtColor(b_img,rgb))
+plt.title('colorful')
+plt.axis('off')
+
+3. Contrast
+import cv2
+import matplotlib.pyplot as plt
+import numpy
+img = cv2.imread(r'C:\Users\arefi\Downloads\shoes.jpg')
+rgb = cv2.COLOR_BGR2RGB
+c_img= cv2.addWeighted(b_img,1.2,np.zeros_like(img),0,0)
+plt.figure(figsize=(8,6))
+plt.subplot(1,2,1)
+plt.imshow(cv2.cvtColor(c_img,rgb))
+plt.title('contrast')
+plt.axis('off')
+
+4. Gamma
+import cv2
+import matplotlib.pyplot as plt
+import numpy
+img = cv2.imread(r'C:\Users\arefi\Downloads\shoes.jpg')
+rgb = cv2.COLOR_BGR2RGB
+log_img = exposure.adjust_log(img, l_fact, inv = False)
+gamma_img = exposure.adjust_gamma(log_img, gamma)
+plt.subplot(1, 5, 4)
+plt.imshow(cv2.cvtColor(gamma_img,rgb))
+plt.title('Gamma Corrected Image')
+plt.axis('off')
+
+5. Log
+import cv2
+import matplotlib.pyplot as plt
+import numpy
+img = cv2.imread(r'C:\Users\arefi\Downloads\shoes.jpg')
+rgb = cv2.COLOR_BGR2RGB
+l_fact = 1.2
+log_img = exposure.adjust_log(img, l_fact, inv = False)
+plt.subplot(1,5,5)
+plt.imshow(exposure.adjust_log(cons_img,l_fact))
+plt.title('log img')
+plt.axis('off')
+
+6. Sigmoid
+7. Cumulative 
+8. Equalize Adapthist 
+9. Add, sub, multiplication
+
+import matplotlib.pyplot as plt
+import cv2
+import numpy as np
+img1 = cv2.imread(r'C:\Users\arefi\Downloads\lion.jpg')
+img2 = cv2.imread(r'C:\Users\arefi\Downloads\tiger.jpg')
+img1 = cv2.resize(img1, (400, 400))
+img2 = cv2.resize(img2, (400, 400))
+# weightedSum = cv2.addWeighted(img1, 0.5, img2, 0.4, 0)
+add = cv2.add(img1,img2)
+sub = cv2.subtract(img1,img2)
+mul = cv2.multiply(img1,img2)
+div = cv2.divide(img1,img2)
+plt.figure(figsize=(12, 4))
+rgb = cv2.COLOR_BGR2RGB
+
+plt.subplot(1, 6, 1)
+plt.imshow(cv2.cvtColor(img1, rgb))
+plt.title('Image 1')
+plt.axis('off')
+
+plt.subplot(1, 6, 2)
+plt.imshow(cv2.cvtColor(img2,rgb))
+plt.title('Image 2')
+plt.axis('off')
+
+plt.subplot(1, 6, 3)
+plt.imshow(cv2.cvtColor(add,rgb))
+plt.title('Addition')
+plt.axis('off')
+
+plt.subplot(1, 6, 4)
+plt.imshow(cv2.cvtColor(sub, cv2.COLOR_BGR2RGB))
+plt.title('Subtraction')
+plt.axis('off')
+
+plt.subplot(1, 6, 5)
+plt.imshow(cv2.cvtColor(mul, rgb))
+plt.title('Multiplication')
+plt.axis('off')
+
+plt.subplot(1, 6, 6)
+plt.imshow(cv2.cvtColor(div, rgb))
+plt.title('Divition')
+plt.axis('off')
+
+plt.show()
